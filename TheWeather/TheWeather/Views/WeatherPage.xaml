@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TheWeather.Views.WeatherPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#2980B9">
+            <Label Text="Búsqueda por coordenadas:"
+                   TextColor="white"
+                   FontSize="Medium"
+                   Margin="15,10,0,0"/>
+            <SearchBar x:Name="Search" 
+                       SearchCommand="{Binding SearchCommand}"
+                       SearchCommandParameter="{Binding Text, Source={x:Reference Search}}"
+                       BackgroundColor="White"
+                       Placeholder="latitud,longitud"                        
+                       Margin="15"/>
+            <Frame Margin="25"
+                   BackgroundColor="#3498D8"
+                   VerticalOptions="FillAndExpand">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".2*"/>
+                        <RowDefinition Height=".6*"/>
+                        <RowDefinition Height=".2*"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="{Binding Data.data[0].city_name}"
+                           TextColor="White"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Large"/>
+                    <StackLayout Grid.Row="1"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center">
+                        <StackLayout Orientation="Horizontal"
+                                     HorizontalOptions="Center">
+                            <!--el {0} definido en StringFormat coloca el valor definido en Source-->
+                            <Image Source="{Binding Data.data[0].weather.icon, 
+                StringFormat='https://www.weatherbit.io/static/img/icons/{0}.png'}"/>
+                            <Label Text="{Binding Data.data[0].weather.description}"
+                                   FontSize="Large"
+                                   TextColor="white"
+                                   VerticalOptions="Center"/>
+                        </StackLayout>
+                        <!--el {0} definido en StringFormat coloca el valor definido en Source-->
+                        <Label Text="{Binding Data.data[0].temp, StringFormat='{0}º'}"
+                               FontSize="Header"
+                               TextColor="White"/>                                                                   
+                    </StackLayout>
+                    <StackLayout Grid.Row="2">
+                        <!--el {0} definido en StringFormat coloca el valor definido en Source-->
+                        <Label Text="{Binding Data.data[0].wind_spd, 
+                            StringFormat='Velocidad del viento: {0} m/s'}"
+                            TextColor="white"
+                               FontAttributes="Bold"/>
+                        <!--el {0} definido en StringFormat coloca el valor definido en Source-->
+                        <Label Text="{Binding Data.data[0].rh, 
+                            StringFormat='La humedad relativa es: {0} %'}"
+                            TextColor="white"
+                               FontAttributes="Bold"/>
+                    </StackLayout>                    
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
