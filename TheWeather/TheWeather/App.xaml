@@ -1,8 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients"
              x:Class="TheWeather.App">
     <Application.Resources>
+        <ControlTemplate x:Key="GradientPage">
+            <Grid>
+                
+                <!--Gradiente con código xaml-->
+                <magic:GradientView VerticalOptions="FillAndExpand">
+                    <!--<magic:GradientView.GradientSource>
+                    <magic:LinearGradient Angle="180">
+                        <magic:GradientStop Color="#162655" Offset="0"/>
+                        <magic:GradientStop Color="#92609E" Offset="1"/>                        
+                    </magic:LinearGradient>
+                </magic:GradientView.GradientSource>-->
+                    
+                    <!--Gradiente con código Css-->
+                    <magic:CssGradientSource>
+                        <![CDATA[
+                    linear-gradient(306deg, rgba(54, 54, 54, 0.05) 0%, rgba(54, 54, 54, 0.05) 33.333%,
+                    rgba(85, 85, 85, 0.05) 33.333%, rgba(85, 85, 85, 0.05) 66.666%,rgba(255, 255, 255, 0.05) 66.666%, 
+                    rgba(255, 255, 255, 0.05) 99.999%),linear-gradient(353deg, rgba(81, 81, 81, 0.05) 0%, 
+                    rgba(81, 81, 81, 0.05) 33.333%,rgba(238, 238, 238, 0.05) 33.333%, rgba(238, 238, 238, 0.05) 66.666%,
+                    rgba(32, 32, 32, 0.05) 66.666%, rgba(32, 32, 32, 0.05) 99.999%),
+                    linear-gradient(140deg, rgba(192, 192, 192, 0.05) 0%, rgba(192, 192, 192, 0.05) 33.333%,
+                    rgba(109, 109, 109, 0.05) 33.333%, rgba(109, 109, 109, 0.05) 66.666%,rgba(30, 30, 30, 0.05) 66.666%,
+                    rgba(30, 30, 30, 0.05) 99.999%),linear-gradient(189deg, rgba(77, 77, 77, 0.05) 0%, 
+                    rgba(77, 77, 77, 0.05) 33.333%,rgba(55, 55, 55, 0.05) 33.333%, rgba(55, 55, 55, 0.05) 66.666%,
+                    rgba(145, 145, 145, 0.05) 66.666%, rgba(145, 145, 145, 0.05) 99.999%),
+                    linear-gradient(90deg, rgb(9, 201, 186),rgb(18, 131, 221))
+                    ]]>
+                    </magic:CssGradientSource>
+                </magic:GradientView>
 
+                <!--ContentPresenter indica dónde se ubicará el contenido de la Page donde se aplique esta plantilla,
+                que en este caso es por encima (superpuesto) al degradado-->
+                <ContentPresenter/>
+            </Grid>
+        </ControlTemplate>
     </Application.Resources>
 </Application>
